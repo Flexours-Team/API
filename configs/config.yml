@@ -1,0 +1,11 @@
+server:
+  host: "127.0.0.1"
+  port: 3002
+db:
+  host: "84.252.128.7"
+  user: "postgres"
+  pass: "MKmOPKMOkkndOputuxlvleElq="
+  name: "adaptive_templater_db"
+  port: 5432
+  mode: "disable"
+  autoMigrate: false
