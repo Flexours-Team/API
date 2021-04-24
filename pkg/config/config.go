@@ -9,9 +9,18 @@ import (
 
 // Config model
 type Config struct {
+	DB struct {
+		User        string `yaml:"user"`
+		Pass        string `yaml:"pass"`
+		Name        string `yaml:"name"`
+		Host        string `yaml:"host"`
+		Port        int    `yaml:"port"`
+		Mode        string `yaml:"mode"`
+		AutoMigrate bool   `yaml:"auto_migrate"`
+	} `yaml:"db"`
 	Server struct {
-		Host string `yaml:"host"`
-		Port int    `yaml:"port"`
+		Host   string `yaml:"host"`
+		Port   int    `yaml:"port"`
 	} `yaml:"server"`
 	Url struct {
 		Business string `yaml:"business"`

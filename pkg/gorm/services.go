@@ -1,4 +1,4 @@
-package services
+package gorm
 
 import (
 	"github.com/olivere/elastic/config"

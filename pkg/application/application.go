@@ -1,23 +1,28 @@
 package application
 
-import "github.com/Flexours-Team/API/pkg/config"
+import (
+	"fmt"
+	"github.com/Flexours-Team/API/pkg/config"
+	"github.com/Flexours-Team/API/pkg/gorm"
+)
 
 type Application struct {
 	Config   *config.Config
-	Services *services.Services
+	DB *gorm.Manager
 }
 
 func Get() (*Application, error) {
 	config := config.Get()
 
-	services, err := services.Get(config)
-	if err != nil {
-		return nil, err
+	dbManager := gorm.NewDB(config)
+	fmt.Println("auto migrate:", config.DB.AutoMigrate)
+	if config.DB.AutoMigrate {
+		dbManager.AutoMigrate()
 	}
 
 	return &Application{
 		Config:   config,
-		Services: services,
-	}
+		DB: dbManager,
+	}, nil
 
 }
